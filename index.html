@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrimonio Civil Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">💍</div>
+      <div>
+        <h1>MATRIMONIO CIVIL DIGITAL</h1>
+        <p>Plataforma de gestión de solicitudes y expedientes</p>
+      </div>
+    </div>
+    <div class="secure">🔒 SIMULACIÓN ACADÉMICA</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="profile-card">
+        <div class="avatar">MC</div>
+        <div>
+          <strong>Registro Civil</strong>
+          <small>Portal de atención</small>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-section="inicio">🏠 <span>Panel principal</span></button>
+        <button class="nav-item" data-section="solicitud">📝 <span>Nueva solicitud</span></button>
+        <button class="nav-item" data-section="documentos">📂 <span>Documentos</span></button>
+        <button class="nav-item" data-section="requisitos">☑️ <span>Requisitos</span></button>
+        <button class="nav-item" data-section="seguimiento">🔎 <span>Seguimiento</span></button>
+        <button class="nav-item" data-section="ceremonia">💒 <span>Ceremonia</span></button>
+        <button class="nav-item" data-section="informacion">ℹ️ <span>Información</span></button>
+      </nav>
+
+      <div class="side-note">
+        <strong>Proceso digital</strong>
+        <p>Solicitud → Documentos → Evaluación → Edicto → Ceremonia → Acta</p>
+      </div>
+
+      <div class="side-footer">
+        Elaborado por<br><strong>MARIO HERRADA GUTIERREZ</strong>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="inicio" class="section active">
+        <div class="hero">
+          <div class="hero-image">
+            <img src="portal.png" alt="Ceremonia de matrimonio civil">
+            <div class="hero-overlay"></div>
+            <div class="hero-copy">
+              <span class="eyebrow">REGISTRO CIVIL · ATENCIÓN DIGITAL</span>
+              <h2>Tu matrimonio,<br><span>organizado paso a paso.</span></h2>
+              <p>Registra la solicitud, administra documentos, revisa requisitos y consulta el estado del expediente desde un solo lugar.</p>
+              <button class="primary" onclick="mostrarSeccion('solicitud')">Iniciar solicitud →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-row">
+          <div>
+            <span class="eyebrow dark">PANEL PRINCIPAL</span>
+            <h2>Gestión del expediente matrimonial</h2>
+            <p class="muted">Una experiencia digital clara para organizar cada etapa del procedimiento.</p>
+          </div>
+          <button class="outline" onclick="mostrarSeccion('seguimiento')">🔎 Consultar expediente</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><span>EXPEDIENTES</span><strong id="statExpedientes">0</strong><small>registrados en esta sesión</small></div>
+          <div class="stat"><span>DOCUMENTOS</span><strong id="statDocumentos">0</strong><small>cargados / registrados</small></div>
+          <div class="stat"><span>EN EVALUACIÓN</span><strong id="statEvaluacion">1</strong><small>estado referencial</small></div>
+          <div class="stat"><span>CEREMONIAS</span><strong id="statCeremonias">0</strong><small>programadas</small></div>
+        </div>
+
+        <div class="process-card">
+          <div class="section-title">
+            <div><span class="eyebrow dark">RUTA DEL TRÁMITE</span><h3>7 etapas del proceso</h3></div>
+            <span class="status-pill">● Flujo digital</span>
+          </div>
+          <div class="steps">
+            <div class="step"><b>01</b><span>Solicitud</span></div>
+            <div class="step"><b>02</b><span>Documentos</span></div>
+            <div class="step"><b>03</b><span>Evaluación</span></div>
+            <div class="step"><b>04</b><span>Edicto</span></div>
+            <div class="step"><b>05</b><span>Programación</span></div>
+            <div class="step"><b>06</b><span>Ceremonia</span></div>
+            <div class="step"><b>07</b><span>Acta</span></div>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <button onclick="mostrarSeccion('solicitud')"><b>📝 Nueva solicitud</b><small>Crear expediente matrimonial</small></button>
+          <button onclick="mostrarSeccion('documentos')"><b>📂 Documentos</b><small>Formatos y archivos</small></button>
+          <button onclick="mostrarSeccion('requisitos')"><b>☑️ Requisitos</b><small>Lista según el caso</small></button>
+          <button onclick="mostrarSeccion('ceremonia')"><b>💒 Ceremonia</b><small>Consultar programación</small></button>
+        </div>
+      </section>
+
+      <section id="solicitud" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">01 · SOLICITUD</span><h2>Nueva solicitud matrimonial</h2><p>Completa la información para generar un expediente de demostración.</p></div></div>
+
+        <form id="formSolicitud" class="card form-card">
+          <div class="form-section">
+            <h3>Información del trámite</h3>
+            <div class="form-grid">
+              <label>Municipalidad
+                <select id="municipalidad">
+                  <option value="Lima">Lima</option>
+                  <option value="Cajamarca">Cajamarca</option>
+                </select>
+              </label>
+              <label>Modalidad
+                <select id="modalidad">
+                  <option>Presencial</option>
+                  <option>Virtual</option>
+                </select>
+              </label>
+              <label>Fecha preferente
+                <input id="fecha" type="date" required>
+              </label>
+              <label>Hora preferente
+                <input id="hora" type="time" value="10:00" required>
+              </label>
+              <label class="wide">Correo electrónico
+                <input id="email" type="email" placeholder="correo@ejemplo.com" required>
+              </label>
+              <label>Tipo de trámite
+                <select id="tipoTramite">
+                  <option>Primer matrimonio</option>
+                  <option>Divorciado(a)</option>
+                  <option>Viudo(a)</option>
+                  <option>Contrayente extranjero</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Contrayente 1</h3>
+            <div class="form-grid">
+              <label>Tipo de documento<select id="tipoDoc1"><option>DNI</option><option>CE</option><option>Pasaporte</option></select></label>
+              <label>N.° documento<input id="doc1" maxlength="12" required></label>
+              <label>Nombres<input id="nom1" required></label>
+              <label>Apellidos<input id="ape1" required></label>
+              <label>Estado civil<select id="civil1"><option>Soltero(a)</option><option>Divorciado(a)</option><option>Viudo(a)</option></select></label>
+              <label>Nacionalidad<input id="nac1" value="Peruana" required></label>
+              <label class="wide">Domicilio<input id="dom1" required></label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Contrayente 2</h3>
+            <div class="form-grid">
+              <label>Tipo de documento<select id="tipoDoc2"><option>DNI</option><option>CE</option><option>Pasaporte</option></select></label>
+              <label>N.° documento<input id="doc2" maxlength="12" required></label>
+              <label>Nombres<input id="nom2" required></label>
+              <label>Apellidos<input id="ape2" required></label>
+              <label>Estado civil<select id="civil2"><option>Soltero(a)</option><option>Divorciado(a)</option><option>Viudo(a)</option></select></label>
+              <label>Nacionalidad<input id="nac2" value="Peruana" required></label>
+              <label class="wide">Domicilio<input id="dom2" required></label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Testigos</h3>
+            <div class="form-grid">
+              <label>Testigo 1<input id="testigo1" required></label>
+              <label>Documento testigo 1<input id="docTestigo1" required></label>
+              <label>Testigo 2<input id="testigo2" required></label>
+              <label>Documento testigo 2<input id="docTestigo2" required></label>
+            </div>
+          </div>
+
+          <div class="notice">⚠️ <b>Demo académica:</b> no ingreses datos personales reales. La información se almacena únicamente en el navegador mediante localStorage.</div>
+          <button class="primary large" type="submit">Generar expediente digital →</button>
+        </form>
+      </section>
+
+      <section id="documentos" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">02 · DOCUMENTOS</span><h2>Gestor documental</h2><p>Formatos referenciales y documentos cargados para la simulación.</p></div></div>
+        <div class="toolbar">
+          <button class="filter active" data-filter="todos">Todos</button>
+          <button class="filter" data-filter="oficial">Formatos oficiales</button>
+          <button class="filter" data-filter="local">Mis documentos</button>
+          <label class="upload-btn">＋ Cargar archivo<input id="archivoInput" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"></label>
+        </div>
+        <div id="documentList" class="documents"></div>
+      </section>
+
+      <section id="requisitos" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">03 · REQUISITOS</span><h2>Checklist del expediente</h2><p>La lista se adapta a la municipalidad y al tipo de caso seleccionado.</p></div></div>
+        <div class="card">
+          <div class="requirements-head"><div><strong id="reqMunicipalidad">Lima</strong><span id="reqCount">0 / 0</span></div><div class="progress"><i id="reqProgress"></i></div></div>
+          <div id="requirementsList" class="checklist"></div>
+        </div>
+      </section>
+
+      <section id="seguimiento" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">04 · SEGUIMIENTO</span><h2>Consulta de expediente</h2><p>Ingresa el código generado por la plataforma.</p></div></div>
+        <div class="search-card">
+          <input id="buscarCodigo" placeholder="Ej.: MC-2026-000001">
+          <button class="primary" onclick="buscarExpediente()">Consultar</button>
+        </div>
+        <div id="seguimientoResultado"></div>
+      </section>
+
+      <section id="ceremonia" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">05 · CEREMONIA</span><h2>Programación de ceremonia</h2><p>Selecciona una fecha referencial para la simulación.</p></div></div>
+        <div class="card ceremony">
+          <div class="calendar-head"><button onclick="cambiarMes(-1)">‹</button><h3 id="mesTitulo"></h3><button onclick="cambiarMes(1)">›</button></div>
+          <div class="week"><span>DOM</span><span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span><span>VIE</span><span>SÁB</span></div>
+          <div id="calendar" class="calendar"></div>
+          <div id="fechaSeleccionada" class="selected-date">Ninguna fecha seleccionada</div>
+        </div>
+      </section>
+
+      <section id="informacion" class="section">
+        <div class="page-head"><div><span class="eyebrow dark">06 · INFORMACIÓN</span><h2>Sobre el proceso</h2><p>Resumen visual de las etapas del trámite.</p></div></div>
+        <div class="timeline">
+          <div><b>01</b><h3>Contacto / Solicitud</h3><p>Se inicia la gestión y se registran los datos del expediente.</p></div>
+          <div><b>02</b><h3>Presentación de documentos</h3><p>Se reúnen y organizan los documentos requeridos.</p></div>
+          <div><b>03</b><h3>Evaluación</h3><p>La documentación es revisada por la entidad.</p></div>
+          <div><b>04</b><h3>Edicto</h3><p>Se continúa con la publicación correspondiente según el procedimiento.</p></div>
+          <div><b>05</b><h3>Programación</h3><p>Se coordina fecha y modalidad de la ceremonia.</p></div>
+          <div><b>06</b><h3>Ceremonia</h3><p>Se realiza la ceremonia civil conforme a la programación.</p></div>
+          <div><b>07</b><h3>Acta</h3><p>Se completa la etapa final y se gestiona el acta.</p></div>
+        </div>
+        <div class="sources card">
+          <h3>Fuentes y referencias</h3>
+          <a target="_blank" href="https://www.gob.pe/">Gob.pe — Plataforma del Estado Peruano ↗</a>
+          <a target="_blank" href="https://www.gob.pe/institucion/munilince/informes-publicaciones/2508880-formato-de-declaracion-jurada-de-testigos-para-matrimonio-civil">Formato referencial de declaración jurada de testigos ↗</a>
+          <p>Los requisitos y costos pueden variar según municipalidad y situación del contrayente. Verifica siempre la información oficial vigente.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>💍 MATRIMONIO CIVIL DIGITAL · Proyecto académico · HTML5 · CSS3 · JavaScript · Elaborado por <strong>MARIO HERRADA GUTIERREZ</strong></footer>
+  <div id="toast"></div>
+  <div id="modal" class="modal"><div class="modal-box"><button class="close" onclick="cerrarModal()">×</button><div id="modalContent"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
